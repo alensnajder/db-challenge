@@ -1,7 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 3000;
+const config = require("./config/app.config");
+const githubRouter = require("./integrations/github/github.router");
 
-app.listen(port, () => {
-  console.log(`Application listening on port ${port}.`);
+app.use("/github", githubRouter);
+
+app.listen(config.port, () => {
+  console.log(`Application listening on port ${config.port}.`);
 });
