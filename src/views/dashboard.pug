@@ -8,7 +8,7 @@ block content
 					span(class="font-weight-bold") Github
 					if githubCurrentUser
 						if githubSelectedRepository
-							span Monitoring repository #{githubSelectedRepository.name}.
+							span Monitoring repository #{githubSelectedRepository.name} and pushing data to Databox.
 							a(class="btn btn-primary" href="/github/logout") Disconnect
 						else
 							span Please select a repository you wish to monitor and push data to databox.
@@ -19,3 +19,14 @@ block content
 									button(class="btn btn-primary" type="submit") Submit
 					else
 						a(class="btn btn-primary" href=`${githubAuthorizationUri}`) Connect
+				div(class="card")
+					span(class="font-weight-bold") SendGrid
+					if sendGridCurrentUser
+						p Monitoring #{sendGridCurrentUser.first_name} #{sendGridCurrentUser.last_name} account and pushing data to Databox.
+						a(class="btn btn-primary" href="/sendgrid/logout") Disconnect
+					else
+						form(action="/sendgrid", method="POST")
+							div(class="form-group")
+								label(for="sendgridApiKey") API Key
+								input(type="text", class="form-control", id="sendgridApiKey" name="sendGridApiKey")
+							button(class="btn btn-primary btn-block" type="submit") Connect
