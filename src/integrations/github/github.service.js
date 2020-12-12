@@ -1,5 +1,4 @@
 const axios = require("axios");
-const githubStorage = require("./github.storage");
 const githubUtils = require("./github.utils");
 
 const githubService = {
