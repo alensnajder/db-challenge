@@ -353,7 +353,7 @@ test("should return repository by id", async () => {
   expect(repository).toEqual(data);
 });
 
-test("should return repository by id", async () => {
+test("should return repository commits count", async () => {
   axios.get.mockResolvedValue({
     headers: {
       link:
