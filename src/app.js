@@ -2,12 +2,18 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const config = require("./config/app.config");
+const path = require("path");
+const dashboardRotuer = require("./dashboard/dashboard.router");
 const githubRouter = require("./integrations/github/github.router");
-const githubService = require("./integrations/github/github.service");
 
-app.use("/oauth/github", githubRouter);
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-console.log(githubService.getAuthorizationUri());
+app.use("/", dashboardRotuer);
+app.use("/github", githubRouter);
 
 app.listen(config.port, () => {
   console.log(`Application listening on port ${config.port}.`);
