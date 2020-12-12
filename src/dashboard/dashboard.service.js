@@ -1,10 +1,16 @@
 const githubService = require("../integrations/github/github.service");
 const githubStorage = require("../integrations/github/github.storage");
 const githubAuth = require("../integrations/github/github.auth");
+const appConfig = require("../config/app.config");
+const githubConfig = require("../integrations/github/github.config");
 
 const dashboardService = {
   getDashboardData: async () => {
-    const githubAuthorizationUri = githubAuth.getAuthorizationUri();
+    const githubAuthorizationUri = githubAuth.getAuthorizationUri(
+      githubConfig.clientId,
+      appConfig.port,
+      "repo"
+    );
     const githubCurrentUser = await githubService.getCurrentUser(
       githubStorage.getAccessToken()
     );

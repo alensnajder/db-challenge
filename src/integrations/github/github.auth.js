@@ -1,14 +1,12 @@
 const axios = require("axios");
-const appConfig = require("../../config/app.config");
 const githubConfig = require("./github.config");
 
-const scopes = "repo";
 const authorizationUri = "https://github.com/login/oauth/authorize";
 const accessTokenUri = "https://github.com/login/oauth/access_token";
 
 const githubAuth = {
-  getAuthorizationUri: () => {
-    return `${authorizationUri}?client_id=${githubConfig.clientId}&redirect_uri=http://localhost:${appConfig.port}/github/oauth/authorization_callback&scope=${scopes}`;
+  getAuthorizationUri: (clientId, port, scopes) => {
+    return `${authorizationUri}?client_id=${clientId}&redirect_uri=http://localhost:${port}/github/oauth/authorization_callback&scope=${scopes}`;
   },
   getAccessToken: async (authorizationCode) => {
     let accessToken = null;

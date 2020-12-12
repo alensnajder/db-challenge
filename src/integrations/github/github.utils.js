@@ -9,7 +9,7 @@ const githubUtils = {
     );
     const queryData = url.parse(lastPageLink, true).query;
 
-    return queryData.page;
+    return +queryData.page;
   },
 };
 
