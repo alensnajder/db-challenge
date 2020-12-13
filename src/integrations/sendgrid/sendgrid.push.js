@@ -5,7 +5,7 @@ const sendGridUtils = require("./sendgrid.utils");
 const sendGridStorage = require("./sendgrid.storage");
 
 const dataBoxClient = new Databox({
-  push_token: "h8jucmgumps2obue4cfitv",
+  push_token: "assec1kls0uejb0zcxfmra",
 });
 
 const task = cron.schedule(

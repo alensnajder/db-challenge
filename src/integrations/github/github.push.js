@@ -4,7 +4,7 @@ const githubService = require("./github.service");
 const githubStorage = require("./github.storage");
 
 const dataBoxClient = new Databox({
-  push_token: "fqrlyfro95l1xfafxef16",
+  push_token: "nnv4ssgrsfkxb8i89ai2s",
 });
 
 const task = cron.schedule(
