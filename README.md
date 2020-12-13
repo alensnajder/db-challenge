@@ -82,6 +82,7 @@ $ npm test
 ![3](.github/3.png)
 ![4](.github/4.png)
 ![5](.github/5.png)
+![6](.github/6.png)
 
 ## Used frameworks & libraries
 
