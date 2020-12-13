@@ -26,6 +26,8 @@ Create a `.env` file and add required variables. For reference check [`.env.exam
 PORT=3000
 GITHUB_CLIENT_ID=
 GITHUB_CLIENT_SECRET=
+DATABOX_GITHUB_KEY=
+DATABOX_SENDGRID_KEY=
 ```
 
 Run an application
