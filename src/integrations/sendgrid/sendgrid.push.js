@@ -98,6 +98,7 @@ const task = cron.schedule(
         date: currentDate,
       },
     ]);
+    console.log("SendGrid data pushed to Databox.");
   },
   {
     scheduled: false,

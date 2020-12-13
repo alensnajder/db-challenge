@@ -43,6 +43,7 @@ const task = cron.schedule(
           date: currentDate,
         },
       ]);
+      console.log("Github repository data pushed to Databox.");
     }
 
     if (commitsCount) {
@@ -51,6 +52,7 @@ const task = cron.schedule(
         value: commitsCount,
         date: currentDate,
       });
+      console.log("Github repository commits count pushed to Databox.");
     }
   },
   {
