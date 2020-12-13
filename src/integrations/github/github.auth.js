@@ -9,7 +9,7 @@ const githubAuth = {
     return `${authorizationUri}?client_id=${clientId}&redirect_uri=http://localhost:${port}/github/oauth/authorization_callback&scope=${scopes}`;
   },
   getAccessToken: async (authorizationCode) => {
-    let accessToken = null;
+    let accessToken;
 
     const response = await axios.post(
       `${accessTokenUri}`,

@@ -1,4 +1,4 @@
-let apiKey = null;
+let apiKey;
 
 const sendGridStorage = {
   getApiKey: () => {

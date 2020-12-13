@@ -3,7 +3,7 @@ const githubUtils = require("./github.utils");
 
 const githubService = {
   getCurrentUser: async (accessToken) => {
-    let currentUser = null;
+    let currentUser;
 
     try {
       const response = await axios.get("https://api.github.com/user", {
@@ -20,7 +20,7 @@ const githubService = {
     return currentUser;
   },
   getCurrentUserRepositories: async (accessToken) => {
-    let userRepositories = null;
+    let userRepositories;
 
     try {
       const response = await axios.get("https://api.github.com/user/repos", {
@@ -37,7 +37,7 @@ const githubService = {
     return userRepositories;
   },
   getRepositoryById: async (accessToken, repositoryId) => {
-    let repository = null;
+    let repository;
 
     try {
       const response = await axios.get(
@@ -57,7 +57,7 @@ const githubService = {
     return repository;
   },
   getRepositoryCommitsCount: async (accessToken, repositoryId) => {
-    let commitsCount = null;
+    let commitsCount;
 
     try {
       const response = await axios.get(

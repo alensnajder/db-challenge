@@ -1,5 +1,5 @@
-let accessToken = null;
-let selectedRepository = null;
+let accessToken;
+let selectedRepository;
 
 const githubStorage = {
   getAccessToken: () => {

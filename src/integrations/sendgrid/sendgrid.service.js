@@ -4,7 +4,7 @@ const baseUri = "https://api.sendgrid.com/v3";
 
 const sendGridService = {
   getCurrentUser: async (apiKey) => {
-    let currentUser = null;
+    let currentUser;
 
     try {
       const response = await axios.get(`${baseUri}/user/profile`, {
@@ -20,7 +20,7 @@ const sendGridService = {
     return currentUser;
   },
   getStats: async (apiKey, startDate) => {
-    let stats = null;
+    let stats;
 
     try {
       const response = await axios.get(

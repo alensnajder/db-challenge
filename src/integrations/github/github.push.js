@@ -20,36 +20,29 @@ const task = cron.schedule(
     );
     const currentDate = new Date().toISOString();
 
-    if (repositoryData.stargazers_count) {
-      dataBoxClient.push({
-        key: "github.stargazers_count",
-        value: repositoryData.stargazers_count,
-        date: currentDate,
-      });
-    }
-
-    if (repositoryData.subscribers_count) {
-      dataBoxClient.push({
-        key: "github.subscribers_count",
-        value: repositoryData.subscribers_count,
-        date: currentDate,
-      });
-    }
-
-    if (repositoryData.forks_count) {
-      dataBoxClient.push({
-        key: "github.forks_count",
-        value: repositoryData.forks_count,
-        date: currentDate,
-      });
-    }
-
-    if (repositoryData.open_issues_count) {
-      dataBoxClient.push({
-        key: "github.open_issues_count",
-        value: repositoryData.open_issues_count,
-        date: currentDate,
-      });
+    if (repositoryData) {
+      dataBoxClient.insertAll([
+        {
+          key: "github.stargazers_count",
+          value: repositoryData.stargazers_count,
+          date: currentDate,
+        },
+        {
+          key: "github.subscribers_count",
+          value: repositoryData.subscribers_count,
+          date: currentDate,
+        },
+        {
+          key: "github.forks_count",
+          value: repositoryData.forks_count,
+          date: currentDate,
+        },
+        {
+          key: "github.open_issues_count",
+          value: repositoryData.open_issues_count,
+          date: currentDate,
+        },
+      ]);
     }
 
     if (commitsCount) {
