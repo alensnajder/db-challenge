@@ -14,11 +14,12 @@ const dashboardService = {
       "repo"
     );
 
-    const githubAccessToken = githubStorage.getAccessToken();
     let githubCurrentUser;
     let githubUserRepositories;
     let githubSelectedRepository;
     let sendGridCurrentUser;
+
+    const githubAccessToken = githubStorage.getAccessToken();
 
     if (githubAccessToken) {
       githubCurrentUser = await githubService.getCurrentUser(
