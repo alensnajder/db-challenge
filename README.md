@@ -36,6 +36,12 @@ $ npm start
 
 Application user interface is accessible at `http://localhost:3000` (or port you specified in .env file).
 
+## Tests
+
+```
+$ npm test
+```
+
 ## Supported data sources
 
 ### Github
