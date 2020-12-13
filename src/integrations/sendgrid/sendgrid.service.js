@@ -33,7 +33,7 @@ const sendGridService = {
       );
       stats = response.data[0].stats[0].metrics;
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
     }
 
     return stats;
