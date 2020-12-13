@@ -13,16 +13,30 @@ const dashboardService = {
       appConfig.port,
       "repo"
     );
-    const githubCurrentUser = await githubService.getCurrentUser(
-      githubStorage.getAccessToken()
-    );
-    const githubUserRepositories = await githubService.getCurrentUserRepositories(
-      githubStorage.getAccessToken()
-    );
-    const githubSelectedRepository = githubStorage.getSelectedRepository();
-    const sendGridCurrentUser = await sendGridService.getCurrentUser(
-      sendGridStorage.getApiKey()
-    );
+
+    const githubAccessToken = githubStorage.getAccessToken();
+    let githubCurrentUser;
+    let githubUserRepositories;
+    let githubSelectedRepository;
+    let sendGridCurrentUser;
+
+    if (githubAccessToken) {
+      githubCurrentUser = await githubService.getCurrentUser(
+        githubStorage.getAccessToken()
+      );
+      githubUserRepositories = await githubService.getCurrentUserRepositories(
+        githubStorage.getAccessToken()
+      );
+      githubSelectedRepository = githubStorage.getSelectedRepository();
+    }
+
+    const sendGridApiKey = sendGridStorage.getApiKey();
+
+    if (sendGridApiKey) {
+      sendGridCurrentUser = await sendGridService.getCurrentUser(
+        sendGridStorage.getApiKey()
+      );
+    }
 
     return {
       githubAuthorizationUri: githubAuthorizationUri,
