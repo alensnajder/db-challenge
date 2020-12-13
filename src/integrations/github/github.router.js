@@ -7,9 +7,10 @@ const githubPush = require("./github.push");
 
 router.get("/oauth/authorization_callback", async (req, res) => {
   if (req.query.code) {
-    githubStorage.setAccessToken(
-      await githubAuth.getAccessToken(req.query.code)
-    );
+    const accessToken = await githubAuth.getAccessToken(req.query.code);
+    if (accessToken) {
+      githubStorage.setAccessToken(accessToken);
+    }
   }
   res.redirect("/");
 });
