@@ -10,14 +10,23 @@ const dataBoxClient = new Databox({
 const task = cron.schedule(
   "* * * * *",
   async () => {
-    const repositoryData = await githubService.getRepositoryById(
-      githubStorage.getAccessToken(),
-      githubStorage.getSelectedRepository().id
-    );
-    const commitsCount = await githubService.getRepositoryCommitsCount(
-      githubStorage.getAccessToken(),
-      githubStorage.getSelectedRepository().id
-    );
+    let repositoryData;
+    let commitsCount;
+
+    const accessToken = githubStorage.getAccessToken();
+    const selectedRepository = githubStorage.getSelectedRepository();
+
+    if (accessToken && selectedRepository) {
+      repositoryData = await githubService.getRepositoryById(
+        accessToken,
+        selectedRepository.id
+      );
+      commitsCount = await githubService.getRepositoryCommitsCount(
+        accessToken,
+        selectedRepository.id
+      );
+    }
+
     const currentDate = new Date().toISOString();
 
     if (repositoryData) {
