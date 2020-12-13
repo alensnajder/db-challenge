@@ -1,5 +1,4 @@
-const { TestScheduler } = require("jest");
-const githubStorage = require("../../src/integrations/github/github.storage");
+const githubStorage = require("../../../src/integrations/github/github.storage");
 
 beforeEach(() => {
   githubStorage.setAccessToken(null);

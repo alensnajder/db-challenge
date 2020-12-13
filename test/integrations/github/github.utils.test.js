@@ -1,5 +1,4 @@
-const { TestScheduler } = require("jest");
-const githubUtils = require("../../src/integrations/github/github.utils");
+const githubUtils = require("../../../src/integrations/github/github.utils");
 
 test("should get last page number from github link http header in response", () => {
   expect(

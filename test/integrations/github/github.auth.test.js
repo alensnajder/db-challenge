@@ -1,5 +1,4 @@
-const { default: Axios } = require("axios");
-const githubAuth = require("../../src/integrations/github/github.auth");
+const githubAuth = require("../../../src/integrations/github/github.auth");
 const axios = require("axios");
 
 jest.mock("axios");

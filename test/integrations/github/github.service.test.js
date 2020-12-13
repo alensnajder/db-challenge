@@ -1,4 +1,4 @@
-const githubService = require("../../src/integrations/github/github.service");
+const githubService = require("../../../src/integrations/github/github.service");
 const axios = require("axios");
 
 jest.mock("axios");
