@@ -1,17 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const sendGridStorage = require("./sendgrid.storage");
-const sendGridPush = require("./sendgrid.push");
-const sendGridService = require("./sendgrid.service");
+const SendGridService = require("./sendgrid.service");
+const DataSource = require("../datasource");
+const SendGridDataSource = require("./sendgrid.datasource");
+const Schedule = require("../../schedule/schedule");
+
+const schedule = new Schedule();
 
 router.post("/", async (req, res) => {
   if (req.body.sendGridApiKey) {
     sendGridStorage.setApiKey(req.body.sendGridApiKey);
+    const sendGridService = new SendGridService();
     const currentUser = await sendGridService.getCurrentUser(
       sendGridStorage.getApiKey()
     );
+
     if (currentUser) {
-      sendGridPush.start();
+      schedule.addJob("sendgrid", "* * * * *", new DataSource(new SendGridDataSource()));
+      schedule.startJob("sendgrid");
     }
   }
   res.redirect("/");
@@ -19,7 +26,7 @@ router.post("/", async (req, res) => {
 
 router.get("/logout", (req, res) => {
   sendGridStorage.setApiKey(null);
-  sendGridPush.stop();
+  schedule.removeJob("sendgrid");
   res.redirect("/");
 });
 

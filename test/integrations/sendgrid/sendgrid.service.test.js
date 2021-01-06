@@ -1,6 +1,8 @@
-const sendGridService = require("../../../src/integrations/sendgrid/sendgrid.service");
 const axios = require("axios");
-
+const sendGridStorage = require("../../../src/integrations/sendgrid/sendgrid.storage");
+const SendGridService = require("../../../src/integrations/sendgrid/sendgrid.service");
+sendGridStorage.setApiKey("testApiKey");
+const sendGridService = new SendGridService();
 jest.mock("axios");
 
 test("should return current user", async () => {
@@ -32,33 +34,29 @@ test("should return current user", async () => {
 });
 
 test("should return stats", async () => {
-  const sendGridResponse = [
-    {
-      date: "2020-12-13",
-      stats: [
-        {
-          metrics: {
-            blocks: 0,
-            bounce_drops: 0,
-            bounces: 0,
-            clicks: 0,
-            deferred: 0,
-            delivered: 0,
-            invalid_emails: 0,
-            opens: 0,
-            processed: 0,
-            requests: 0,
-            spam_report_drops: 0,
-            spam_reports: 0,
-            unique_clicks: 0,
-            unique_opens: 0,
-            unsubscribe_drops: 0,
-            unsubscribes: 0,
-          },
-        },
-      ],
-    },
-  ];
+  const sendGridResponse = [{
+    date: "2020-12-13",
+    stats: [{
+      metrics: {
+        blocks: 0,
+        bounce_drops: 0,
+        bounces: 0,
+        clicks: 0,
+        deferred: 0,
+        delivered: 0,
+        invalid_emails: 0,
+        opens: 0,
+        processed: 0,
+        requests: 0,
+        spam_report_drops: 0,
+        spam_reports: 0,
+        unique_clicks: 0,
+        unique_opens: 0,
+        unsubscribe_drops: 0,
+        unsubscribes: 0,
+      },
+    }, ],
+  }, ];
 
   const expectedData = {
     blocks: 0,
