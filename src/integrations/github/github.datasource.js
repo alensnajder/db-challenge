@@ -14,7 +14,6 @@ class GithubDataSource {
   }
 
   async getMetrics() {
-    console.log("Github get metrics called");
     const repositoryData = await this._githubService.getRepositoryById(this._selectedRepository.id);
     const repositoryCommitsCount = await this._githubService.getRepositoryCommitsCount(this._selectedRepository.id);
 

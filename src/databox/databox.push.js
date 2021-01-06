@@ -14,9 +14,9 @@ class DataboxPush {
     const dataBoxClient = new Databox({
       push_token: this._getPushTokenByDataSourceName(dataSourceName),
     });
-    console.log(`Pushing ${dataSourceName} with metrics:`);
-    console.log(metrics);
+
     dataBoxClient.insertAll(this.toDataboxMetrics(metrics));
+    console.log(`Metrics from ${dataSourceName} pushed to databox.`);
   }
 
   toDataboxMetrics(metrics) {
