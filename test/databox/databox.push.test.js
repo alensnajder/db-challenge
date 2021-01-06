@@ -1,6 +1,3 @@
-const {
-  TestScheduler
-} = require("jest");
 const DataboxPush = require("../../src/databox/databox.push");
 const Metric = require("../../src/integrations/metric");
 

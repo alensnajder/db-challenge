@@ -1,8 +1,6 @@
 const MetricHolder = require("../metricholder");
 const Metric = require("../metric");
 const SendGridService = require("./sendgrid.service");
-const sendGridService = require("./sendgrid.service");
-const sendGridStorage = require("./sendgrid.storage");
 const sendGridUtils = require("./sendgrid.utils");
 
 class SendGridDataSource {

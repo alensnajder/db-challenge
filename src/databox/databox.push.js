@@ -12,7 +12,7 @@ class DataboxPush {
 
   push(dataSourceName, metrics) {
     const dataBoxClient = new Databox({
-      push_token: this.getPushTokenByDataSourceName(dataSourceName),
+      push_token: this._getPushTokenByDataSourceName(dataSourceName),
     });
     console.log(`Pushing ${dataSourceName} with metrics:`);
     console.log(metrics);
@@ -33,7 +33,7 @@ class DataboxPush {
     return databoxMetrics;
   }
 
-  getPushTokenByDataSourceName(dataSourceName) {
+  _getPushTokenByDataSourceName(dataSourceName) {
     if (!databoxConfig.hasOwnProperty(dataSourceName)) {
       throw `${dataSourceName} databox push token does not exists in config.`;
     }
