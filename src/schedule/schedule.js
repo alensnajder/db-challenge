@@ -38,6 +38,10 @@ class Schedule {
       cronJob.stop();
     }
   }
+
+  removeAll() {
+    cronJobs.clear();
+  }
 }
 
 module.exports = Schedule;
