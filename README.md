@@ -1,4 +1,4 @@
-# DB-Challenge
+# DB-Challenges
 
 ## Installation
 
